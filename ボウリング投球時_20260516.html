@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ボウリング フォームの極意</title>
+<style>
+  :root {
+    /* ライトテーマのカラーパレット */
+    --bg-color: #f8f9fa;
+    --text-main: #333333;
+    --text-muted: #6c757d;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    
+    --primary: #4361ee;
+    --primary-light: #e0e7ff;
+    --secondary: #3a0ca3;
+    --accent: #f72585;
+    --accent-light: #fce8f3;
+    --success: #2b9348;
+    --success-light: #e8f5e9;
+    --warning: #f8961e;
+    --warning-light: #fff3e0;
+    
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* ダークテーマのカラーパレット */
+      --bg-color: #121212;
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --card-bg: #1e1e1e;
+      --border-color: #333333;
+      
+      --primary: #4cc9f0;
+      --primary-light: rgba(76, 201, 240, 0.15);
+      --secondary: #4361ee;
+      --accent: #f72585;
+      --accent-light: rgba(247, 37, 133, 0.15);
+      --success: #4ade80;
+      --success-light: rgba(74, 222, 128, 0.15);
+      --warning: #fb8500;
+      --warning-light: rgba(251, 133, 0, 0.15);
+      
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container {
+    max-width: 600px; /* スマホ・タブレット向けに最適化 */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--secondary);
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h1 {
+      color: var(--primary);
+    }
+  }
+
+  /* セクション共通スタイル */
+  .section {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* 1. 心構え・アプローチ */
+  .mindset .section-title { color: var(--success); }
+  .mindset-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mindset-list li {
+    background: var(--success-light);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid var(--success);
+    font-weight: 600;
+  }
+
+  /* 2. 投球フォームの流れ */
+  .flow .section-title { color: var(--primary); }
+  .flow-container {
+    position: relative;
+    padding-left: 24px;
+  }
+  /* タイムラインの線 */
+  .flow-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    width: 2px;
+    background: var(--primary-light);
+  }
+
+  .flow-step {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .flow-step:last-child {
+    margin-bottom: 0;
+  }
+  /* タイムラインの丸 */
+  .flow-step::before {
+    content: attr(data-step);
+    position: absolute;
+    left: -24px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+  }
+
+  .flow-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--text-main);
+  }
+  
+  .flow-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: var(--bg-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 4px;
+    border: 1px dashed var(--border-color);
+  }
+  
+  .highlight-text {
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* 3. イメージと感覚 */
+  .sense .section-title { color: var(--secondary); }
+  .sense-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sense-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--bg-color);
+  }
+  .sense-card-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+  }
+  .sense-card-content {
+    font-size: 0.95rem;
+  }
+  .sense-arrow {
+    text-align: center;
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin: 4px 0;
+  }
+  .sense-conclusion {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid currentColor;
+  }
+
+  /* 4. トラブルシューティング */
+  .trouble .section-title { color: var(--warning); }
+  .trouble-intro {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    background: var(--warning-light);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid var(--warning);
+  }
+  
+  .check-number {
+    font-weight: bold;
+    color: var(--warning);
+    margin-right: 12px;
+    min-width: 20px;
+  }
+  
+  .check-content {
+    flex: 1;
+  }
+  
+  .check-point {
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .check-detail {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  
+  .solution-box {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .solution-box::before {
+    content: '→';
+  }
+
+  /* 5. スペアの鉄則 */
+  .spare {
+    background: var(--accent);
+    color: white;
+    border: none;
+    text-align: center;
+  }
+  .spare .section-title {
+    color: white;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .spare p {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- 1. アプローチの基本 -->
+  <div class="section mindset">
+    <div class="section-title">
+      アプローチの基本
+    </div>
+    <ul class="mindset-list">
+      <li>① ゆっくり歩く</li>
+      <li>② 力まない、リラックスして</li>
+      <li>③ 8割くらいの力がいい</li>
+    </ul>
+  </div>
+
+  <!-- 2. 投球のステップ -->
+  <div class="section flow">
+    <div class="section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      投球動作の流れ
+    </div>
+    <div class="flow-container">
+      <div class="flow-step" data-step="1">
+        <div class="flow-title">しっかりプッシュアウェイして</div>
+      </div>
+      
+      <div class="flow-step" data-step="2">
+        <div class="flow-title">テイクバック</div>
+        <div class="flow-title" style="color:var(--primary); font-size:1rem;">「大きく」「ゆっくり」「力を抜いて」</div>
+        <div class="flow-sub">
+          ⚠️ <span class="highlight-text">背中に回らないように</span><br>
+          板目に沿って、真っ直ぐ後ろに引く
+        </div>
+      </div>
+      
+      <div class="flow-step" data-step="3">
+        <div class="flow-title">下半身を使う</div>
+        <div class="flow-sub">
+          リリースでしっかり<span class="highlight-text">止まる</span>
+        </div>
+      </div>
+      
+      <div class="flow-step" data-step="4">
+        <div class="flow-title">投げる位置をしっかり意識して、通す</div>
+        <div class="flow-sub">
+          ボールの軌道をイメージする
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. イメージと感覚 -->
+  <div class="section sense">
+    <div class="section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
+      イメージと指先の感覚
+    </div>
+    <div class="sense-grid">
+      
+      <div class="sense-card">
+        <div class="sense-card-title">🎯 1投目の軌道イメージ</div>
+        <div class="sense-card-content">
+          1投目もスペアを取る時のように、<br>
+          <strong>投げるコース</strong>と<strong>ボウルがポケットに入る軌道</strong>をイメージして投げる
+        </div>
+      </div>
+
+      <div class="sense-card">
+        <div class="sense-card-title">🖐️ ボウルの重さの感じ方</div>
+        <div class="sense-card-content">
+          ボウルの重さを<br><strong>「中指」</strong>と<strong>「薬指の付け根」</strong>で感じる
+          <div class="sense-arrow">↓</div>
+          <div class="sense-conclusion">曲げようとしない<br>（まっすぐ前に押し出す）</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. トラブルシューティング -->
+  <div class="section trouble">
+    <div class="section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+      コントロールが悪い時のチェック
+    </div>
+    <div class="trouble-intro">コントロールが乱れたら、以下を確認する：</div>
+    
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-number">①</div>
+        <div class="check-content">
+          <div class="check-point">タイミングと速度</div>
+          <div class="check-detail">・リリースにかけて速くなっていないか</div>
+          <div class="check-detail">・歩く速度が速くなっていないか</div>
+        </div>
+      </div>
+      
+      <div class="check-item">
+        <div class="check-number">②</div>
+        <div class="check-content">
+          <div class="check-point">ターゲット</div>
+          <div class="check-detail">・スパットを通っているか</div>
+        </div>
+      </div>
+      
+      <div class="check-item">
+        <div class="check-number">③</div>
+        <div class="check-content">
+          <div class="check-point">テイクバックの軌道と大きさ</div>
+          <div class="check-detail">・背中に回っていないか</div>
+          <div class="check-detail">・小さくなっていないか</div>
+        </div>
+      </div>
+      
+      <div class="check-item">
+        <div class="check-number">④</div>
+        <div class="check-content">
+          <div class="check-point">下半身の安定</div>
+          <div class="check-detail">・下半身を使えているか</div>
+          <div class="check-detail">・リリース時に動いていないか（止まっているか）</div>
+        </div>
+      </div>
+      
+      <div class="check-item">
+        <div class="check-number">⑤</div>
+        <div class="check-content">
+          <div class="check-point">リリースの位置</div>
+          <div class="check-detail">・ボウルを落としていないか</div>
+          <div class="solution-box">リリースポイントをやや前にする</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. スペア -->
+  <div class="section mindset">
+    <div class="section-title">
+      スペアの鉄則
+    </div>
+    <p>
+      スペアの時もしっかり、<br>振り子を使ってコントロールを安定させる
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
